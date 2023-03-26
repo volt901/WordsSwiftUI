@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ListView: View {
     @State var search = ""
+    @EnvironmentObject var listViewModel:ListViewModel
+    
     var body: some View {
         VStack{
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)){
@@ -33,7 +35,7 @@ struct ListView: View {
                     }
                 }
                 Button{
-                    
+                    listViewModel.isShowAddView.toggle()
                 } label: {
                     ZStack{
                         Circle()
@@ -45,6 +47,7 @@ struct ListView: View {
                             .foregroundColor(.white)
                     }
                 }
+                .padding(15)
             }
             .padding(15)
         }
@@ -76,9 +79,6 @@ struct CardItem : View {
         .padding(20)
         .background(.secondary.opacity(0.2))
         .cornerRadius(15)
-        
-        
-        
     }
 }
 

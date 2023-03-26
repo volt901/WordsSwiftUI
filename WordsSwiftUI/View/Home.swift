@@ -8,33 +8,52 @@
 import SwiftUI
 
 struct Home: View {
-    @State var selection = 2
+    @State var selection = 1
+    @ObservedObject var listViewModel = ListViewModel()
+   
+    @ObservedObject var linkViewModel = LinkViewModel()
+    
+    
     var body: some View {
-        TabView (selection: $selection){
-            ListView()
-                .tag(1)
-                .tabItem {
-                    VStack {
-                        Image(systemName: "list.dash")
-                        Text("list")
+        ZStack {
+            TabView (selection: $selection){
+                ListView()
+                    .environmentObject(listViewModel)
+                    .tag(1)
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "list.dash")
+                            Text("list")
+                        }
                     }
-                }
-           RandomWorldView()
-                .tag(2)
-                .tabItem {
-                    VStack {
-                        Image(systemName: "textformat.abc")
-                        Text("words")
+                RandomWordView()
+                    .tag(2)
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "textformat.abc")
+                            Text("words")
+                        }
                     }
-                }
-            Text ("link")
-                .tag(3)
-                .tabItem {
-                    VStack {
-                        Image(systemName: "link")
-                        Text("link")
+                LinkView()
+                    .environmentObject(linkViewModel)
+                    .tag(3)
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "link")
+                            Text("link")
+                        }
                     }
-                }
+            }
+            
+            if listViewModel.isShowAddView {
+                AddWordView()
+                    .environmentObject(listViewModel)
+            }
+            
+            if linkViewModel.isShowAddLinkView {
+                AddLinkView()
+                    .environmentObject(linkViewModel)
+            }
         }
     }
 }

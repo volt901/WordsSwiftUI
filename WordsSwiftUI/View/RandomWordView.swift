@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RandomWorldView: View {
+struct RandomWordView: View {
     @State var isShow = false
     var body: some View {
         VStack(alignment: .center){
@@ -60,7 +60,7 @@ struct RandomWorldView: View {
     }
 }
 
-struct RandomWorldView_Previews: PreviewProvider {
+struct RandomWordView_Previews: PreviewProvider {
     static var previews: some View {
         //RandomWorldView()
         ContentView()
