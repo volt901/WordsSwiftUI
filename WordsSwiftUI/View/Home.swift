@@ -13,6 +13,11 @@ struct Home: View {
    
     @ObservedObject var linkViewModel = LinkViewModel()
     
+    init() {
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().backgroundColor = UIColor.white
+    }
     
     var body: some View {
         ZStack {
