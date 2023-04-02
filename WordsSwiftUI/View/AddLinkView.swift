@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct AddLinkView: View {
     @State var addLink = ""
     @State var addLesson = ""
-    
+    @State var showAlert = false
+    @ObservedResults (LinkModel.self) var linkItems
     @EnvironmentObject var linkViewModel:LinkViewModel
     
     var body: some View {
@@ -52,6 +54,20 @@ struct AddLinkView: View {
             Spacer()
             
             Button{
+                if addLink.count < 0,
+                   addLesson.count < 0 {
+                    showAlert.toggle()
+                } else {
+                    let newLink = LinkModel()
+                    newLink.link = addLink
+                    newLink.linkName = addLesson
+                    
+                    $linkItems.append(newLink)
+                    
+                    withAnimation {
+                        linkViewModel.isShowAddLinkView.toggle()
+                    }
+                }
                 
             } label: {
                 Text("SAVE")
@@ -62,6 +78,7 @@ struct AddLinkView: View {
             .frame(maxWidth: .infinity)
             .background(.green)
             .cornerRadius(15)
+            .alert (Text("Empty fields"), isPresented: $showAlert, actions: {})
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding(.vertical,30)

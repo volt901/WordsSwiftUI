@@ -6,17 +6,22 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct LinkView: View {
     @EnvironmentObject var linkViewModel:LinkViewModel
+    @ObservedResults (LinkModel.self) var linkItems
     
     var body: some View {
         ZStack {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)){
                 ScrollView(.vertical, showsIndicators: false){
                     VStack{
-                        LinkItem()
-                        LinkItem()
+                        ForEach(linkItems, id: \.id) { link in
+                            LinkItem(link:link){ isDelete in
+                                $linkItems.remove (link)
+                            }
+                        }
                     }
                 }
                 Button{
@@ -39,17 +44,22 @@ struct LinkView: View {
     }
 }
 struct LinkItem : View {
+    
+    @EnvironmentObject var linkViewModel:LinkViewModel
+    var link: LinkModel
+    var onDelete: (Bool) -> ()
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 15) {
                 Image(systemName: "link")
                     .resizable()
                     .frame(width: 20, height: 20)
-                Text("link")
+                Text(link.linkName)
                     .font(.system(size: 20))
                 Spacer()
                 Button {
-                    
+                    onDelete(true)
                 } label: {
                     Image(systemName: "xmark")
                 }
@@ -60,7 +70,8 @@ struct LinkItem : View {
             .background(.secondary.opacity(0.2))
             .cornerRadius(15)
             .onTapGesture {
-                print(1)
+                linkViewModel.isShowLinkContent.toggle()
+                linkViewModel.openUrl = link.link
             }
         }
     }

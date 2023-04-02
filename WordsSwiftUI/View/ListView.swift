@@ -32,8 +32,8 @@ struct ListView: View {
                         VStack (alignment: .leading) {
                             VStack{
                                 ForEach(wordItem, id: \.id){ item in
-                                    CardItem {
-                                        //
+                                    CardItem(cardItem: item) {
+                                        $wordItem.remove(item)
                                     }
                                 }
                             }
@@ -65,26 +65,29 @@ struct ListView: View {
 struct CardItem : View {
     
     @State var offsetX: CGFloat = 0
-    
+    var cardItem: WordItem
     var onDelete: () -> ()
     var body: some View {
         ZStack(alignment: .trailing){
             removeImage()
             VStack(alignment: .leading) {
                 VStack(alignment: .leading){
-                    Text("Car")
+                    Text(cardItem.mainWord)
                         .font(.system(size: 18, weight: .bold))
                         .padding(.bottom, 1)
-                    Text("Машина")
+                    Text(cardItem.wordTranslate)
                         .font(.system(size: 18, weight: .light))
                 }
-                Divider()
-                VStack(alignment: .leading){
-                    Text("Примечание ")
-                        .font(.system(size: 18, weight: .bold))
-                        .padding(.bottom, 1)
-                    Text("У меня есть автомобиль, я его выйграл в лотерею")
-                        .font(.system(size: 18, weight: .light))
+                
+                if cardItem.wordDescription.count > 0{
+                    Divider()
+                    VStack(alignment: .leading){
+                        Text("Примечание ")
+                            .font(.system(size: 18, weight: .bold))
+                            .padding(.bottom, 1)
+                        Text(cardItem.wordDescription)
+                            .font(.system(size: 18, weight: .light))
+                    }
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)

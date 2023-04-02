@@ -20,6 +20,9 @@
 		7DB2454029D8681200B7C2B9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7DB2453F29D8681200B7C2B9 /* Realm */; };
 		7DB2454229D8681200B7C2B9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7DB2454129D8681200B7C2B9 /* RealmSwift */; };
 		7DB2454429D86C0E00B7C2B9 /* WordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB2454329D86C0E00B7C2B9 /* WordItem.swift */; };
+		7DB2454729D93A0700B7C2B9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB2454629D93A0700B7C2B9 /* WebView.swift */; };
+		7DB2454929D9B20E00B7C2B9 /* LinkShowView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB2454829D9B20E00B7C2B9 /* LinkShowView .swift */; };
+		7DB2454B29D9D99C00B7C2B9 /* LinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB2454A29D9D99C00B7C2B9 /* LinkItem.swift */; };
 		7DFCD55D29D095D300ED8ADE /* AddLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFCD55C29D095D300ED8ADE /* AddLinkView.swift */; };
 		7DFCD55F29D096BF00ED8ADE /* LinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFCD55E29D096BF00ED8ADE /* LinkViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +40,9 @@
 		7D7794CF29D0830B00AF80D2 /* AddWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordView.swift; sourceTree = "<group>"; };
 		7D7794D129D08F8F00AF80D2 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		7DB2454329D86C0E00B7C2B9 /* WordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordItem.swift; sourceTree = "<group>"; };
+		7DB2454629D93A0700B7C2B9 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		7DB2454829D9B20E00B7C2B9 /* LinkShowView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkShowView .swift"; sourceTree = "<group>"; };
+		7DB2454A29D9D99C00B7C2B9 /* LinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItem.swift; sourceTree = "<group>"; };
 		7DFCD55C29D095D300ED8ADE /* AddLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkView.swift; sourceTree = "<group>"; };
 		7DFCD55E29D096BF00ED8ADE /* LinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +79,7 @@
 		7D7794B529CF390A00AF80D2 /* WordsSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				7DB2454529D939D900B7C2B9 /* Extension */,
 				7D7794C629CF393D00AF80D2 /* ViewModel */,
 				7D7794C529CF392700AF80D2 /* Model */,
 				7D7794C429CF391800AF80D2 /* View */,
@@ -96,6 +103,7 @@
 				7D7794B629CF390A00AF80D2 /* WordsSwiftUIApp.swift */,
 				7D7794B829CF390A00AF80D2 /* ContentView.swift */,
 				7D7794C729CF39A400AF80D2 /* Home.swift */,
+				7DB2454829D9B20E00B7C2B9 /* LinkShowView .swift */,
 				7D7794C929CF3ACE00AF80D2 /* ListView.swift */,
 				7D7794CB29CF51ED00AF80D2 /* RandomWordView.swift */,
 				7D7794CD29D035F200AF80D2 /* LinkView.swift */,
@@ -109,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				7DB2454329D86C0E00B7C2B9 /* WordItem.swift */,
+				7DB2454A29D9D99C00B7C2B9 /* LinkItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +129,14 @@
 				7DFCD55E29D096BF00ED8ADE /* LinkViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7DB2454529D939D900B7C2B9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7DB2454629D93A0700B7C2B9 /* WebView.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D7794D029D0830B00AF80D2 /* AddWordView.swift in Sources */,
+				7DB2454929D9B20E00B7C2B9 /* LinkShowView .swift in Sources */,
 				7DFCD55D29D095D300ED8ADE /* AddLinkView.swift in Sources */,
 				7DFCD55F29D096BF00ED8ADE /* LinkViewModel.swift in Sources */,
 				7D7794CA29CF3ACE00AF80D2 /* ListView.swift in Sources */,
@@ -208,7 +226,9 @@
 				7D7794C829CF39A400AF80D2 /* Home.swift in Sources */,
 				7D7794CE29D035F200AF80D2 /* LinkView.swift in Sources */,
 				7D7794D229D08F8F00AF80D2 /* ListViewModel.swift in Sources */,
+				7DB2454729D93A0700B7C2B9 /* WebView.swift in Sources */,
 				7D7794B729CF390A00AF80D2 /* WordsSwiftUIApp.swift in Sources */,
+				7DB2454B29D9D99C00B7C2B9 /* LinkItem.swift in Sources */,
 				7DB2454429D86C0E00B7C2B9 /* WordItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

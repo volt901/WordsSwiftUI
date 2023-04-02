@@ -9,4 +9,8 @@ import Foundation
 
 class LinkViewModel: ObservableObject {
     @Published var isShowAddLinkView = false
+    
+    @Published var isShowLinkContent = false
+    
+    @Published var openUrl = ""
 }

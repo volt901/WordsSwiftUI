@@ -59,6 +59,11 @@ struct Home: View {
                 AddLinkView()
                     .environmentObject(linkViewModel)
             }
+            
+            if linkViewModel.isShowLinkContent{
+                LinkShowView(url: $linkViewModel.openUrl)
+                    .environmentObject(linkViewModel)
+            }
         }
     }
 }

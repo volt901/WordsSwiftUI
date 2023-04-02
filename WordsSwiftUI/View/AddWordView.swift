@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct AddWordView: View {
     
     @State var addWord = ""
     @State var addTranslation = ""
     @State var addComment = ""
+    
+    @State var showAlert = false
+    @ObservedResults(WordItem.self) var wordItem
     
     @EnvironmentObject var listViewModel:ListViewModel
     
@@ -53,17 +57,31 @@ struct AddWordView: View {
             VStack(alignment: .leading)  {
                 Text("Comment")
                     .font(.system(size: 15, weight: .semibold))
-                TextField("", text: $addComment)
-                    .padding()
-                    .frame(height: 150)
-                    .background(.gray.opacity(0.4))
+                TextEditor(text: $addComment)
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundColor(Color.black)
                     .cornerRadius(15)
+                    .frame(height: 150)
+                    .colorMultiply(.gray.opacity(0.4))
             }
             
             Spacer()
             
             Button{
-                
+                if addWord.count == 0,
+                   addTranslation.count == 0{
+                    showAlert.toggle()
+                } else {
+                    let word = WordItem()
+                    word.mainWord = addWord
+                    word.wordDescription = addComment
+                    word.wordTranslate = addTranslation
+                    
+                    $wordItem.append(word)
+                    withAnimation {
+                        listViewModel.isShowAddView.toggle()
+                    }
+                }
             } label: {
                 Text("SAVE")
                     .foregroundColor(.white)
@@ -73,6 +91,9 @@ struct AddWordView: View {
             .frame(maxWidth: .infinity)
             .background(.green)
             .cornerRadius(15)
+            .alert(Text("Empty fields"), isPresented: $showAlert) {
+                //
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding(.vertical,30)
