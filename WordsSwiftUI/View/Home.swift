@@ -47,7 +47,7 @@ struct Home: View {
                             Image(systemName: "link")
                             Text("link")
                         }
-                    }
+                    } 
             }
             
             if listViewModel.isShowAddView {

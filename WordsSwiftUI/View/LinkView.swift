@@ -13,10 +13,10 @@ struct LinkView: View {
     @ObservedResults (LinkModel.self) var linkItems
     
     var body: some View {
-        ZStack {
+        NavigationView {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)){
                 ScrollView(.vertical, showsIndicators: false){
-                    VStack{
+                    VStack(alignment: .leading){
                         ForEach(linkItems, id: \.id) { link in
                             LinkItem(link:link){ isDelete in
                                 $linkItems.remove (link)
@@ -27,18 +27,22 @@ struct LinkView: View {
                 Button{
                     linkViewModel.isShowAddLinkView.toggle()
                 } label: {
-                    ZStack{
-                        Circle()
-                            .frame(width: 60, height: 60)
-                            .foregroundColor(.green)
-                        Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.white)
+                    HStack{
+                        Spacer()
+                        ZStack{
+                            Circle()
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.green)
+                            Image(systemName: "plus")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.white)
+                        }
                     }
                 }
                 .padding(15)
             }
+            .navigationTitle("Links")
             .padding(15)
         }
     }

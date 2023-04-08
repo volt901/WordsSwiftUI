@@ -68,8 +68,7 @@ struct AddWordView: View {
             Spacer()
             
             Button{
-                if addWord.count == 0,
-                   addTranslation.count == 0{
+                if addWord.count == 0 || addTranslation.count == 0 {
                     showAlert.toggle()
                 } else {
                     let word = WordItem()

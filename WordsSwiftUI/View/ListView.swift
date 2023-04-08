@@ -23,11 +23,13 @@ struct ListView: View {
                             .resizable()
                             .frame(width: 20,height: 20)
                         TextField("search", text: $search)
+                            .textInputAutocapitalization(.never)
                     }
                     .padding()
                     .background(.gray.opacity(0.4))
                     .cornerRadius(15)
                     .padding(.horizontal,15)
+                    .searchable(text: $search, collection: $wordItem, keyPath:\.mainWord )
                     ScrollView(.vertical,showsIndicators: false){
                         VStack (alignment: .leading) {
                             VStack{
@@ -53,10 +55,11 @@ struct ListView: View {
                             .frame(width: 20, height: 20)
                             .foregroundColor(.white)
                     }
+                    .padding(15)
                 }
             }
-            //.padding(15)
         }
+        .padding(15)
     }
 }
 
